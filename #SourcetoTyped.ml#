@@ -1,8 +1,8 @@
 (* Travail de vérification des types 
    + création de structures annotées avec leurs types *)
 
-module S = SourceAst  (* Source de la transformation *)
-module T = TypedAst (* Cible de la transformation  *)
+module S = SourceAst 
+module T = TypedAst 
 module Symb_Tbl = S.Symb_Tbl
 
 (* Rapports d'erreurs *)
@@ -75,8 +75,6 @@ let annote_function p f =
     | If(e, b1, b2) -> T.If(annote_expression e, annote_block b1, annote_block b2)
     | Print(e)      -> T.Print(annote_expression e)
     | ProcCall(c)   -> T.ProcCall(annote_call c)
-    (* | Throw         -> failwith "Pas encore implémenté" *)
-    (* | Try(b1, b2)   -> failwith "Pas encore implémenté" *)
       
   and annote_expression expr =
     let annot = type_expression p symb_tbl expr in
