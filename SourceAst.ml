@@ -5,7 +5,10 @@ module Symb_Tbl = Map.Make(String)
 (* On programme est constitué de plusieurs fonctions, et on donne pour
    chacune son nom et sa définition. On pourrait aussi utiliser
    le type [function_info Symb_Tbl.t] *)
-type program = (string * function_info) list
+type program = {
+  functions :  (string * function_info) list;
+  structs   :  (string * struct_info) list;
+}
 
 and function_info = {
   (* Les mentions du type de retour et des types des paramètres seront
@@ -15,6 +18,8 @@ and function_info = {
   locals:  identifier_info Symb_Tbl.t;
   code:    block;
 }
+
+and struct_info = (string * typ) list
 
 (* Différentes sortes de variables *)
 and identifier_kind =
@@ -26,6 +31,7 @@ and typ =
   | TypInteger
   | TypBoolean
   | TypArray  of typ
+  | TypStruct of string
       
 (* Un bloc de code est une liste d'instructions *)
 and block = instruction list
@@ -35,8 +41,6 @@ and instruction =
   | If    of expression * block * block (* Branchement       *)
   | Print of expression                 (* Affichage         *)
   | ProcCall of call                    (* Appel de fonction *)
-  | Throw
-  | Try of block * block
 
 and expression =
   | Literal   of literal                         (* Valeur immédiate    *)
@@ -44,6 +48,7 @@ and expression =
   | Binop     of binop * expression * expression (* Opération binaire   *)
   | FunCall   of call                            (* Appel de fonction   *)
   | NewArray  of expression * typ                (* Création de tableau *)
+  | NewRecord of string
       
 and call = string * expression list (* Appel de fonction *)
   
@@ -54,6 +59,8 @@ and literal =
 and location =
   | Identifier  of string   (* Variable en mémoire *)
   | ArrayAccess of a_access (* Case d'un tableau   *)
+  | FieldAccess of f_access
+      
 and a_access = expression * expression
       
 and binop =
@@ -61,6 +68,8 @@ and binop =
   | Eq  (* == *) | Neq  (* != *)
   | Lt  (* <  *) | Le   (* <= *)
   | And (* && *) | Or   (* || *)
+
+and f_access = expression * string 
     
 (* Cadeau pour le débogage : un afficheur. *)
 open Printf
@@ -68,7 +77,7 @@ open Printf
 let rec print_typ = function
   | TypInteger    -> "integer"
   | TypBoolean    -> "boolean"
-  | TypArray(ty)  -> (print_typ ty)^"_array"
+  | TypArray(ty)  -> (print_typ ty)^"array"
 let print_identifier_info i = print_typ i.typ
 
 let print_symb_tbl tbl =
@@ -123,10 +132,6 @@ and print_instruction o = function
       (print_block (o+1) b2) (offset o)
   | Print(e) -> sprintf "print(%s)" (print_expression e)
   | ProcCall(c) -> print_call c
-  | Throw -> sprintf "throw"
-  | Try(b1, b2) -> sprintf "try (\n%s%s) catch (\n%s%s)"
-     (print_block (o+1) b1) (offset o)
-     (print_block (o+1) b2) (offset o)
 
 let rec print_formals = function
   | [] -> ""
@@ -142,8 +147,7 @@ let print_function f_id f_info =
     f_id (print_formals f_info.formals)
     (print_symb_tbl f_info.locals) (print_block 1 f_info.code)
   
-let print_program out prog =
-  fprintf out "Version Source\n\n";
-  List.iter (fun (f_id, f_info) ->
-    fprintf out "%s\n\n" (print_function f_id f_info)
-  ) prog
+let print_program prog =
+  List.fold_right (fun (f_id, f_info) s ->
+    sprintf "%s\n\n%s" (print_function f_id f_info) s
+  ) prog ""
