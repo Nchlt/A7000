@@ -1,0 +1,195 @@
+Version Goto
+
+main_integer(0 offset requis) (
+  var stack(8) x;
+_main_integer_0: loop_integer_integer(0, x)
+
+)
+
+
+loop_integer_integer(-12 offset requis) (
+  var stack(8) r;
+  var stack(12) i;
+  var stack(-12) _tmp_3;
+  var stack(-8) _tmp_2;
+  var stack(-4) _tmp_1;
+_loop_integer_integer_0: # If
+_loop_integer_integer_1: _tmp_2 <- point_integer_integer(i, r)
+_loop_integer_integer_2: _tmp_3 <- line_integer_integer(_tmp_2, r)
+_loop_integer_integer_3: goto _label_loop_integer_integer_1 when _tmp_3
+_loop_integer_integer_4: # Bloc else
+_loop_integer_integer_5: goto _label_loop_integer_integer_2
+_label_loop_integer_integer_1: _label_loop_integer_integer_1
+_loop_integer_integer_7: # Bloc then
+_loop_integer_integer_8: _tmp_1 <- i + 1
+_loop_integer_integer_9: loop_integer_integer(_tmp_1, r)
+_label_loop_integer_integer_2: _label_loop_integer_integer_2
+_loop_integer_integer_11: # Fin if
+
+)
+
+
+point_integer_integer(-28 offset requis) (
+  var stack(16) result;
+  var stack(8) r;
+  var stack(-28) j;
+  var stack(12) i;
+  var stack(-24) _tmp_6;
+  var stack(-20) _tmp_5;
+  var stack(-16) _tmp_4;
+  var stack(-12) _tmp_3;
+  var stack(-8) _tmp_2;
+  var stack(-4) _tmp_1;
+_point_integer_integer_0: j <- 0
+_point_integer_integer_1: # While
+_point_integer_integer_2: goto _label_point_integer_integer_2
+_label_point_integer_integer_1: _label_point_integer_integer_1
+_point_integer_integer_4: # Corps de boucle
+_point_integer_integer_5: _tmp_6 <- j + 1
+_point_integer_integer_6: j <- _tmp_6
+_label_point_integer_integer_2: _label_point_integer_integer_2
+_point_integer_integer_8: # Test de boucle
+_point_integer_integer_9: _tmp_1 <- i * i
+_point_integer_integer_10: _tmp_2 <- j * j
+_point_integer_integer_11: _tmp_3 <- _tmp_1 + _tmp_2
+_point_integer_integer_12: _tmp_4 <- r * r
+_point_integer_integer_13: _tmp_5 <- _tmp_3 < _tmp_4
+_point_integer_integer_14: goto _label_point_integer_integer_1 when _tmp_5
+_point_integer_integer_15: # Fin boucle
+_point_integer_integer_16: result <- j
+
+)
+
+
+line_integer_integer(-20 offset requis) (
+  var stack(16) result;
+  var stack(8) r;
+  var stack(12) p;
+  var stack(-20) j;
+  var stack(-16) _tmp_4;
+  var stack(-12) _tmp_3;
+  var stack(-8) _tmp_2;
+  var stack(-4) _tmp_1;
+_line_integer_integer_0: result <- false
+_line_integer_integer_1: j <- 0
+_line_integer_integer_2: # While
+_line_integer_integer_3: goto _label_line_integer_integer_2
+_label_line_integer_integer_1: _label_line_integer_integer_1
+_line_integer_integer_5: # Corps de boucle
+_line_integer_integer_6: # If
+_line_integer_integer_7: _tmp_4 <- j < p
+_line_integer_integer_8: goto _label_line_integer_integer_3 when _tmp_4
+_line_integer_integer_9: # Bloc else
+_line_integer_integer_10: print(35)
+_line_integer_integer_11: goto _label_line_integer_integer_4
+_label_line_integer_integer_3: _label_line_integer_integer_3
+_line_integer_integer_13: # Bloc then
+_line_integer_integer_14: print(46)
+_line_integer_integer_15: result <- true
+_label_line_integer_integer_4: _label_line_integer_integer_4
+_line_integer_integer_17: # Fin if
+_line_integer_integer_18: print(32)
+_line_integer_integer_19: _tmp_3 <- j + 1
+_line_integer_integer_20: j <- _tmp_3
+_label_line_integer_integer_2: _label_line_integer_integer_2
+_line_integer_integer_22: # Test de boucle
+_line_integer_integer_23: _tmp_1 <- r + 1
+_line_integer_integer_24: _tmp_2 <- j < _tmp_1
+_line_integer_integer_25: goto _label_line_integer_integer_1 when _tmp_2
+_line_integer_integer_26: # Fin boucle
+_line_integer_integer_27: print(10)
+
+)
+
+
+line_integer_integer_integer_boolean(-20 offset requis) (
+  var stack(8) y;
+  var stack(12) x;
+  var stack(24) result;
+  var stack(16) r;
+  var stack(20) p;
+  var stack(-20) j;
+  var stack(-16) _tmp_4;
+  var stack(-12) _tmp_3;
+  var stack(-8) _tmp_2;
+  var stack(-4) _tmp_1;
+_line_integer_integer_integer_boolean_0: result <- false
+_line_integer_integer_integer_boolean_1: j <- 0
+_line_integer_integer_integer_boolean_2: # While
+_line_integer_integer_integer_boolean_3: goto _label_line_integer_integer_integer_boolean_2
+_label_line_integer_integer_integer_boolean_1: _label_line_integer_integer_integer_boolean_1
+_line_integer_integer_integer_boolean_5: # Corps de boucle
+_line_integer_integer_integer_boolean_6: # If
+_line_integer_integer_integer_boolean_7: _tmp_4 <- j < p
+_line_integer_integer_integer_boolean_8: goto _label_line_integer_integer_integer_boolean_3 when _tmp_4
+_line_integer_integer_integer_boolean_9: # Bloc else
+_line_integer_integer_integer_boolean_10: print(35)
+_line_integer_integer_integer_boolean_11: goto _label_line_integer_integer_integer_boolean_4
+_label_line_integer_integer_integer_boolean_3: _label_line_integer_integer_integer_boolean_3
+_line_integer_integer_integer_boolean_13: # Bloc then
+_line_integer_integer_integer_boolean_14: print(46)
+_line_integer_integer_integer_boolean_15: result <- true
+_label_line_integer_integer_integer_boolean_4: _label_line_integer_integer_integer_boolean_4
+_line_integer_integer_integer_boolean_17: # Fin if
+_line_integer_integer_integer_boolean_18: print(32)
+_line_integer_integer_integer_boolean_19: _tmp_3 <- j + 1
+_line_integer_integer_integer_boolean_20: j <- _tmp_3
+_label_line_integer_integer_integer_boolean_2: _label_line_integer_integer_integer_boolean_2
+_line_integer_integer_integer_boolean_22: # Test de boucle
+_line_integer_integer_integer_boolean_23: _tmp_1 <- r + 1
+_line_integer_integer_integer_boolean_24: _tmp_2 <- j < _tmp_1
+_line_integer_integer_integer_boolean_25: goto _label_line_integer_integer_integer_boolean_1 when _tmp_2
+_line_integer_integer_integer_boolean_26: # Fin boucle
+_line_integer_integer_integer_boolean_27: print(10)
+
+)
+
+
+line_integer_boolean(-16 offset requis) (
+  var stack(16) result;
+  var stack(8) r;
+  var stack(12) p;
+  var stack(-16) j;
+  var stack(-12) _tmp_3;
+  var stack(-8) _tmp_2;
+  var stack(-4) _tmp_1;
+_line_integer_boolean_0: result <- false
+_line_integer_boolean_1: j <- 0
+_line_integer_boolean_2: # While
+_line_integer_boolean_3: goto _label_line_integer_boolean_2
+_label_line_integer_boolean_1: _label_line_integer_boolean_1
+_line_integer_boolean_5: # Corps de boucle
+_line_integer_boolean_6: # If
+_line_integer_boolean_7: _tmp_3 <- j < p
+_line_integer_boolean_8: goto _label_line_integer_boolean_5 when _tmp_3
+_line_integer_boolean_9: # Bloc else
+_line_integer_boolean_10: print(35)
+_line_integer_boolean_11: goto _label_line_integer_boolean_6
+_label_line_integer_boolean_5: _label_line_integer_boolean_5
+_line_integer_boolean_13: # Bloc then
+_line_integer_boolean_14: print(46)
+_line_integer_boolean_15: result <- true
+_label_line_integer_boolean_6: _label_line_integer_boolean_6
+_line_integer_boolean_17: # Fin if
+_line_integer_boolean_18: print(32)
+_line_integer_boolean_19: _tmp_2 <- j + 1
+_line_integer_boolean_20: j <- _tmp_2
+_line_integer_boolean_21: # If
+_line_integer_boolean_22: _tmp_1 <- j == 10
+_line_integer_boolean_23: goto _label_line_integer_boolean_3 when _tmp_1
+_line_integer_boolean_24: # Bloc else
+_line_integer_boolean_25: goto _label_line_integer_boolean_4
+_label_line_integer_boolean_3: _label_line_integer_boolean_3
+_line_integer_boolean_27: # Bloc then
+_line_integer_boolean_28: r <- false
+_label_line_integer_boolean_4: _label_line_integer_boolean_4
+_line_integer_boolean_30: # Fin if
+_label_line_integer_boolean_2: _label_line_integer_boolean_2
+_line_integer_boolean_32: # Test de boucle
+_line_integer_boolean_33: goto _label_line_integer_boolean_1 when r
+_line_integer_boolean_34: # Fin boucle
+_line_integer_boolean_35: print(10)
+
+)
+
+

@@ -1,0 +1,45 @@
+Version Goto
+
+main_integer(1 paramètres) (
+  var Formal(1) x;
+  var Local j;
+  var Local i;
+  var Local continue;
+  continue := true;
+  i := 0;
+  While;
+  _label_main_integer_2;
+  _label_main_integer_1;
+  Corps de boucle;
+  continue := false;
+  j := 0;
+  While;
+  _label_main_integer_4;
+  _label_main_integer_3;
+  Corps de boucle;
+  j := ( j + 1 );
+  If;
+  ( ( ( i * i ) + ( j * j ) ) < ( x * x ) ) _label_main_integer_5;
+  Bloc else;
+  print(35);
+  _label_main_integer_6;
+  _label_main_integer_5;
+  Bloc then;
+  print(46);
+  continue := true;
+  _label_main_integer_6;
+  Fin if;
+  print(32);
+  _label_main_integer_4;
+  Test de boucle;
+  ( j < ( x + 1 ) ) _label_main_integer_3;
+  Fin boucle;
+  print(10);
+  i := ( i + 1 );
+  _label_main_integer_2;
+  Test de boucle;
+  continue _label_main_integer_1;
+  Fin boucle;
+)
+
+

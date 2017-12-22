@@ -1,0 +1,52 @@
+Version Untyped
+
+main_integer(1 paramètres) (
+  var Formal(1) x;
+  loop_integer_integer(0, x);
+)
+
+
+loop_integer_integer(2 paramètres) (
+  var Formal(2) r;
+  var Formal(1) i;
+  if line_integer_integer(point_integer_integer(i, r), r) then (
+    loop_integer_integer(( i + 1 ), r);
+  ) else (
+  );
+)
+
+
+point_integer_integer(2 paramètres) (
+  var Return result;
+  var Formal(2) r;
+  var Local j;
+  var Formal(1) i;
+  j := 0;
+  while ( ( ( i * i ) + ( j * j ) ) < ( r * r ) ) (
+    j := ( j + 1 );
+  );
+  result := j;
+)
+
+
+line_integer_integer(2 paramètres) (
+  var Return result;
+  var Formal(2) r;
+  var Formal(1) p;
+  var Local j;
+  result := false;
+  j := 0;
+  while ( j < ( r + 1 ) ) (
+    if ( j < p ) then (
+      print(46);
+      result := true;
+    ) else (
+      print(35);
+    );
+    print(32);
+    j := ( j + 1 );
+  );
+  print(10);
+)
+
+

@@ -1,0 +1,100 @@
+Version Typed
+
+main(integer x) (
+  var integer x;
+  void : loop(integer : 0, integer : integer : x);
+)
+
+
+loop(integer i, integer r) (
+  var integer r;
+  var integer i;
+  if boolean : line(integer : point(integer : integer : i, integer : integer : r), integer : integer : r) then (
+    void : loop(integer : ( integer : integer : i + integer : 1 ), integer : integer : r);
+  ) else (
+  );
+)
+
+
+point(integer i, integer r) (
+  var integer result;
+  var integer r;
+  var integer j;
+  var integer i;
+  integer : j := integer : 0;
+  while boolean : ( integer : ( integer : ( integer : integer : i * integer : integer : i ) + integer : ( integer : integer : j * integer : integer : j ) ) < integer : ( integer : integer : r * integer : integer : r ) ) (
+    integer : j := integer : ( integer : integer : j + integer : 1 );
+  );
+  integer : result := integer : integer : j;
+)
+
+
+line(integer p, integer r) (
+  var boolean result;
+  var integer r;
+  var integer p;
+  var integer j;
+  boolean : result := boolean : false;
+  integer : j := integer : 0;
+  while boolean : ( integer : integer : j < integer : ( integer : integer : r + integer : 1 ) ) (
+    if boolean : ( integer : integer : j < integer : integer : p ) then (
+      print(integer : 46);
+      boolean : result := boolean : true;
+    ) else (
+      print(integer : 35);
+    );
+    print(integer : 32);
+    integer : j := integer : ( integer : integer : j + integer : 1 );
+  );
+  print(integer : 10);
+)
+
+
+line(integer p, integer r, integer x, boolean y) (
+  var boolean y;
+  var integer x;
+  var boolean result;
+  var integer r;
+  var integer p;
+  var integer j;
+  boolean : result := boolean : false;
+  integer : j := integer : 0;
+  while boolean : ( integer : integer : j < integer : ( integer : integer : r + integer : 1 ) ) (
+    if boolean : ( integer : integer : j < integer : integer : p ) then (
+      print(integer : 46);
+      boolean : result := boolean : true;
+    ) else (
+      print(integer : 35);
+    );
+    print(integer : 32);
+    integer : j := integer : ( integer : integer : j + integer : 1 );
+  );
+  print(integer : 10);
+)
+
+
+line(integer p, boolean r) (
+  var boolean result;
+  var boolean r;
+  var integer p;
+  var integer j;
+  boolean : result := boolean : false;
+  integer : j := integer : 0;
+  while boolean : boolean : r (
+    if boolean : ( integer : integer : j < integer : integer : p ) then (
+      print(integer : 46);
+      boolean : result := boolean : true;
+    ) else (
+      print(integer : 35);
+    );
+    print(integer : 32);
+    integer : j := integer : ( integer : integer : j + integer : 1 );
+    if boolean : ( integer : integer : j == integer : 10 ) then (
+      boolean : r := boolean : false;
+    ) else (
+    );
+  );
+  print(integer : 10);
+)
+
+

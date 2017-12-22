@@ -1,0 +1,141 @@
+Version Untyped
+
+main_integer(1 paramètres) (
+  var Formal(1) x;
+  play_boolean[][]_integer_integer(westworld(), 40, 24);
+)
+
+
+bass(0 paramètres) (
+  var Return result;
+  var Local line;
+  line := [6];
+  line[0] := 0;
+  line[1] := 2;
+  line[2] := 7;
+  line[3] := 14;
+  line[4] := 15;
+  line[5] := 15;
+  result := line;
+)
+
+
+theme(0 paramètres) (
+  var Return result;
+  var Local line;
+  line := [12];
+  line[0] := 14;
+  line[1] := 14;
+  line[2] := 15;
+  line[3] := 14;
+  line[4] := 14;
+  line[5] := 15;
+  line[6] := 14;
+  line[7] := 12;
+  line[8] := 10;
+  line[9] := 10;
+  line[10] := 10;
+  line[11] := 10;
+  result := line;
+)
+
+
+repeat_integer[]_integer(2 paramètres) (
+  var Return result;
+  var Local pulse;
+  var Local linetmp;
+  var Formal(1) line;
+  var Formal(2) length;
+  linetmp := [( 2 * length )];
+  pulse := 0;
+  while ( pulse < length ) (
+    linetmp[pulse] := line[pulse];
+    linetmp[( pulse + length )] := line[pulse];
+    pulse := ( pulse + 1 );
+  );
+  result := line;
+)
+
+
+burn_boolean[][]_integer[]_integer_integer_integer(5 paramètres) (
+  var Formal(5) transpose;
+  var Formal(4) speed;
+  var Local pulse;
+  var Local pitch;
+  var Formal(2) line;
+  var Formal(3) length;
+  var Local internal;
+  var Formal(1) cylinder;
+  pulse := 0;
+  while ( pulse < length ) (
+    internal := 0;
+    pitch := ( line[pulse] + transpose );
+    while ( internal < speed ) (
+      cylinder[( ( pulse * speed ) + internal )][pitch] := true;
+      internal := ( internal + 1 );
+    );
+    pulse := ( pulse + 1 );
+  );
+)
+
+
+blank_integer_integer(2 paramètres) (
+  var Formal(1) width;
+  var Return result;
+  var Local pulse;
+  var Local j;
+  var Local i;
+  var Formal(2) duration;
+  var Local cylinder;
+  cylinder := [duration];
+  i := 0;
+  while ( i < duration ) (
+    pulse := [width];
+    j := 0;
+    while ( j < width ) (
+      pulse[j] := false;
+      j := ( j + 1 );
+    );
+    cylinder[i] := pulse;
+    i := ( i + 1 );
+  );
+  result := cylinder;
+)
+
+
+westworld(0 paramètres) (
+  var Return result;
+  var Local cylinder;
+  cylinder := blank_integer_integer(40, 24);
+  burn_boolean[][]_integer[]_integer_integer_integer(cylinder, theme(), 12, 2, 12);
+  burn_boolean[][]_integer[]_integer_integer_integer(cylinder, theme(), 12, 2, 24);
+  burn_boolean[][]_integer[]_integer_integer_integer(cylinder, repeat_integer[]_integer(repeat_integer[]_integer(bass(), 6), 12), 24, 1, 0);
+  result := cylinder;
+)
+
+
+play_boolean[][]_integer_integer(3 paramètres) (
+  var Formal(2) width;
+  var Local w;
+  var Formal(3) height;
+  var Local h;
+  var Formal(1) cylinder;
+  h := ( height - 1 );
+  while ( 0 <= h ) (
+    w := ( width - 1 );
+    while ( 0 <= w ) (
+      if cylinder[h][w] then (
+        print(35);
+        print(35);
+      ) else (
+        print(32);
+        print(32);
+      );
+      w := ( w - 1 );
+    );
+    print(10);
+    h := ( h - 1 );
+  );
+)
+
+

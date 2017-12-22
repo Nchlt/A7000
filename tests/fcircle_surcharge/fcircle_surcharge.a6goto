@@ -1,0 +1,149 @@
+Version Goto
+
+main_integer(1 paramètres) (
+  var Formal(1) x;
+  loop_integer_integer(0, x);
+)
+
+
+loop_integer_integer(2 paramètres) (
+  var Formal(2) r;
+  var Formal(1) i;
+  If;
+  line_integer_integer(point_integer_integer(i, r), r) _label_loop_integer_integer_1;
+  Bloc else;
+  _label_loop_integer_integer_2;
+  _label_loop_integer_integer_1;
+  Bloc then;
+  loop_integer_integer(( i + 1 ), r);
+  _label_loop_integer_integer_2;
+  Fin if;
+)
+
+
+point_integer_integer(2 paramètres) (
+  var Return result;
+  var Formal(2) r;
+  var Local j;
+  var Formal(1) i;
+  j := 0;
+  While;
+  _label_point_integer_integer_2;
+  _label_point_integer_integer_1;
+  Corps de boucle;
+  j := ( j + 1 );
+  _label_point_integer_integer_2;
+  Test de boucle;
+  ( ( ( i * i ) + ( j * j ) ) < ( r * r ) ) _label_point_integer_integer_1;
+  Fin boucle;
+  result := j;
+)
+
+
+line_integer_integer(2 paramètres) (
+  var Return result;
+  var Formal(2) r;
+  var Formal(1) p;
+  var Local j;
+  result := false;
+  j := 0;
+  While;
+  _label_line_integer_integer_2;
+  _label_line_integer_integer_1;
+  Corps de boucle;
+  If;
+  ( j < p ) _label_line_integer_integer_3;
+  Bloc else;
+  print(35);
+  _label_line_integer_integer_4;
+  _label_line_integer_integer_3;
+  Bloc then;
+  print(46);
+  result := true;
+  _label_line_integer_integer_4;
+  Fin if;
+  print(32);
+  j := ( j + 1 );
+  _label_line_integer_integer_2;
+  Test de boucle;
+  ( j < ( r + 1 ) ) _label_line_integer_integer_1;
+  Fin boucle;
+  print(10);
+)
+
+
+line_integer_integer_integer_boolean(4 paramètres) (
+  var Formal(4) y;
+  var Formal(3) x;
+  var Return result;
+  var Formal(2) r;
+  var Formal(1) p;
+  var Local j;
+  result := false;
+  j := 0;
+  While;
+  _label_line_integer_integer_integer_boolean_2;
+  _label_line_integer_integer_integer_boolean_1;
+  Corps de boucle;
+  If;
+  ( j < p ) _label_line_integer_integer_integer_boolean_3;
+  Bloc else;
+  print(35);
+  _label_line_integer_integer_integer_boolean_4;
+  _label_line_integer_integer_integer_boolean_3;
+  Bloc then;
+  print(46);
+  result := true;
+  _label_line_integer_integer_integer_boolean_4;
+  Fin if;
+  print(32);
+  j := ( j + 1 );
+  _label_line_integer_integer_integer_boolean_2;
+  Test de boucle;
+  ( j < ( r + 1 ) ) _label_line_integer_integer_integer_boolean_1;
+  Fin boucle;
+  print(10);
+)
+
+
+line_integer_boolean(2 paramètres) (
+  var Return result;
+  var Formal(2) r;
+  var Formal(1) p;
+  var Local j;
+  result := false;
+  j := 0;
+  While;
+  _label_line_integer_boolean_2;
+  _label_line_integer_boolean_1;
+  Corps de boucle;
+  If;
+  ( j < p ) _label_line_integer_boolean_5;
+  Bloc else;
+  print(35);
+  _label_line_integer_boolean_6;
+  _label_line_integer_boolean_5;
+  Bloc then;
+  print(46);
+  result := true;
+  _label_line_integer_boolean_6;
+  Fin if;
+  print(32);
+  j := ( j + 1 );
+  If;
+  ( j == 10 ) _label_line_integer_boolean_3;
+  Bloc else;
+  _label_line_integer_boolean_4;
+  _label_line_integer_boolean_3;
+  Bloc then;
+  r := false;
+  _label_line_integer_boolean_4;
+  Fin if;
+  _label_line_integer_boolean_2;
+  Test de boucle;
+  r _label_line_integer_boolean_1;
+  Fin boucle;
+  print(10);
+)
+
+

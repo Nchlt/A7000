@@ -1,0 +1,141 @@
+Version Source
+
+main(integer x) (
+  var integer x;
+  play(westworld(), 40, 24);
+)
+
+
+bass() (
+  var integer_array result;
+  var integer_array line;
+  line := [6]integer;
+  line[0] := 0;
+  line[1] := 2;
+  line[2] := 7;
+  line[3] := 14;
+  line[4] := 15;
+  line[5] := 15;
+  result := line;
+)
+
+
+theme() (
+  var integer_array result;
+  var integer_array line;
+  line := [12]integer;
+  line[0] := 14;
+  line[1] := 14;
+  line[2] := 15;
+  line[3] := 14;
+  line[4] := 14;
+  line[5] := 15;
+  line[6] := 14;
+  line[7] := 12;
+  line[8] := 10;
+  line[9] := 10;
+  line[10] := 10;
+  line[11] := 10;
+  result := line;
+)
+
+
+repeat(integer_array line, integer length) (
+  var integer_array result;
+  var integer pulse;
+  var integer_array linetmp;
+  var integer_array line;
+  var integer length;
+  linetmp := [( 2 * length )]integer;
+  pulse := 0;
+  while ( pulse < length ) (
+    linetmp[pulse] := line[pulse];
+    linetmp[( pulse + length )] := line[pulse];
+    pulse := ( pulse + 1 );
+  );
+  result := line;
+)
+
+
+burn(boolean_array_array cylinder, integer_array line, integer length, integer speed, integer transpose) (
+  var integer transpose;
+  var integer speed;
+  var integer pulse;
+  var integer pitch;
+  var integer_array line;
+  var integer length;
+  var integer internal;
+  var boolean_array_array cylinder;
+  pulse := 0;
+  while ( pulse < length ) (
+    internal := 0;
+    pitch := ( line[pulse] + transpose );
+    while ( internal < speed ) (
+      cylinder[( ( pulse * speed ) + internal )][pitch] := true;
+      internal := ( internal + 1 );
+    );
+    pulse := ( pulse + 1 );
+  );
+)
+
+
+blank(integer width, integer duration) (
+  var integer width;
+  var boolean_array_array result;
+  var boolean_array pulse;
+  var integer j;
+  var integer i;
+  var integer duration;
+  var boolean_array_array cylinder;
+  cylinder := [duration]boolean_array;
+  i := 0;
+  while ( i < duration ) (
+    pulse := [width]boolean;
+    j := 0;
+    while ( j < width ) (
+      pulse[j] := false;
+      j := ( j + 1 );
+    );
+    cylinder[i] := pulse;
+    i := ( i + 1 );
+  );
+  result := cylinder;
+)
+
+
+westworld() (
+  var boolean_array_array result;
+  var boolean_array_array cylinder;
+  cylinder := blank(40, 24);
+  burn(cylinder, theme(), 12, 2, 12);
+  burn(cylinder, theme(), 12, 2, 24);
+  burn(cylinder, repeat(repeat(bass(), 6), 12), 24, 1, 0);
+  result := cylinder;
+)
+
+
+play(boolean_array_array cylinder, integer width, integer height) (
+  var integer width;
+  var integer w;
+  var integer height;
+  var integer h;
+  var boolean_array_array cylinder;
+  h := ( height - 1 );
+  while ( 0 <= h ) (
+    w := ( width - 1 );
+    while ( 0 <= w ) (
+      if cylinder[h][w] then (
+        print(35);
+        print(35);
+      ) else (
+        print(32);
+        print(32);
+      );
+      w := ( w - 1 );
+    );
+    print(10);
+    h := ( h - 1 );
+  );
+)
+
+
