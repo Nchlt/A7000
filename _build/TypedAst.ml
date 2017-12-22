@@ -17,7 +17,7 @@ type struct_info = SourceAst.struct_info
 (* } *)
 
 (* and struct_info = (string * typ) list *)
-  
+
 and function_info = {
   (* Les mentions du type de retour et des types des paramètres seront
      utiles pour la vérification des types *)
@@ -42,7 +42,7 @@ and instruction =
   | If    of typed_expression * block * block (* Branchement       *)
   | Print of typed_expression                 (* Affichage         *)
   | ProcCall of typed_call                    (* Appel de fonction *)
-  | Throw
+  | Throw (* début 9 bis *)
   | Try of block * block
 
 and expression =
@@ -65,6 +65,7 @@ and f_access = typed_expression * string
 and a_access = typed_expression * typed_expression
 
 
+(*  Pour pouvoir imprimer et debuger *)
 open Printf
 
 let rec print_typ : SourceAst.typ -> string = function

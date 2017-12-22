@@ -116,20 +116,9 @@ let generate_function f =
        @@ sw t0 0 v0                              (* Entête           *)
        @@ to_dest dest v0                         (* Retour           *)
 
-    (* Récupère l'adresse du bloc catch à partir de gp et jump à cette adresse *)
-    | Throw            ->
-       lw t0 4 gp
-       @@ jr t0
-       (* Crée un nouveau handler à l'adresse de gp + valeur de 0(gp)
-	  puis met les bonnes valeurs :
-	  - 4(gp + 0(gp)) = gp
-	  - 8(gp) adresse de s
-       *)
-    | NewHandler(s)    ->
-       lw t0 0 gp
-        
-    (* Change l'adresse de gp à celle donnée par l'adresse de gp + 4 *)
-    | RmHandler        ->  lw gp 4 gp
+    | Throw            -> failwith "9 bis Pas encore implémenté"
+    | NewHandler(s)    -> failwith "9 bis Pas encore implémenté"
+    | RmHandler        -> failwith "9 bis Pas encore implémenté"
 
   (* Appel de fonction *)
   (* Note : cette version simple n'est pas compatible avec l'allocation de

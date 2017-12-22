@@ -1,0 +1,39 @@
+=================================
+|    Compilateur langage A6000  |
+=================================
+        Rendu Sequence 3
+Nouredine Nour & Malik Kazi-Aoual
+
+
+TP 9
+====
+
+TypedAst complété
+SourcetoTyped complété
+les fonctions permettant de récupérer les types dans la Symb_Tbl on été codées
+avec l'aide de notre camarade Alexandrina(même groupe)
+
+Les vérifications de type sont effectuées dans la foulée de cette récupération et
+non pas en passant par les smarts constructors évoqués dans le sujet car nous avons
+rencontré trop de problème en essayant d'implémenter cette méthode.
+(L'ancien fichier TypedAst avec les smart constructors est inclu)
+
+Le TP 9 bis est entamé mais ne fonctionne pas encore.
+
+Dans le dossier tests vous trouverez des exemples.
+dada.a6m pour illustrer la surcharge
+typeCheck1.asm & typeCheck2.asm pour le type checking
+
+TP 10
+=====
+
+Le but de ce TP est d'ajouter des structures qui ressemblent a des enregistrements.
+L'astuce pour les implémenter facilement réside dans le fait qu'on les traduits par
+notre représentation des tableaux.
+
+La majorité du travail est fait mais nous avons bloqué sur le passage du FieldAccess au
+ArrayAccess (cf TypedtoUntyped ligne 38).
+En effet nous avons codé une fonction qui permet
+de récupérer "l'indice" du champs de l'enregistrement qui est traité comme un tableau. Cette
+fonction à besoin d'itérer sur la liste p.structs mais nous n'arrivons pas à y accéder.
+Nous avons commenté la partie en question afin qu'elle n'empêche pas la compilation.

@@ -2,7 +2,7 @@
 # Target: Main.ml.depends, tags: { extension:ml, file:Main.ml, ocaml, ocamldep, quiet, traverse }
 ocamlfind ocamldep -modules Main.ml > Main.ml.depends # cached
 # Target: AllocatedtoMips.ml.depends, tags: { extension:ml, file:AllocatedtoMips.ml, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -modules AllocatedtoMips.ml > AllocatedtoMips.ml.depends # cached
+ocamlfind ocamldep -modules AllocatedtoMips.ml > AllocatedtoMips.ml.depends
 # Target: AllocatedAst.ml.depends, tags: { extension:ml, file:AllocatedAst.ml, ocaml, ocamldep, quiet, traverse }
 ocamlfind ocamldep -modules AllocatedAst.ml > AllocatedAst.ml.depends # cached
 # Target: IrAst.ml.depends, tags: { extension:ml, file:IrAst.ml, ocaml, ocamldep, quiet, traverse }
@@ -27,8 +27,6 @@ ocamlfind ocamlc -c -w -40 -o AllocatedAst.cmo AllocatedAst.ml # cached
 ocamlfind ocamldep -modules Mips.ml > Mips.ml.depends # cached
 # Target: Mips.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:Mips.cmo, file:Mips.ml, implem, ocaml, quiet, traverse }
 ocamlfind ocamlc -c -w -40 -o Mips.cmo Mips.ml # cached
-# Target: AllocatedtoMips.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:AllocatedtoMips.cmo, file:AllocatedtoMips.ml, implem, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -w -40 -o AllocatedtoMips.cmo AllocatedtoMips.ml # cached
 # Target: GototoIr.ml.depends, tags: { extension:ml, file:GototoIr.ml, ocaml, ocamldep, quiet, traverse }
 ocamlfind ocamldep -modules GototoIr.ml > GototoIr.ml.depends # cached
 # Target: GototoIr.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:GototoIr.cmo, file:GototoIr.ml, implem, ocaml, quiet, traverse }
@@ -54,7 +52,7 @@ ocamlfind ocamlc -c -w -40 -o IrInterferenceGraph.cmo IrInterferenceGraph.ml # c
 # Target: IrtoAllocated.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:IrtoAllocated.cmo, file:IrtoAllocated.ml, implem, ocaml, quiet, traverse }
 ocamlfind ocamlc -c -w -40 -o IrtoAllocated.cmo IrtoAllocated.ml # cached
 # Target: SourceLexer.mll, tags: { extension:mll, file:SourceLexer.mll, lexer, ocaml, ocamllex, quiet, traverse }
-/usr/bin/ocamllex.opt -q SourceLexer.mll # cached
+ocamllex.opt -q SourceLexer.mll # cached
 # Target: SourceLexer.ml.depends, tags: { extension:ml, file:SourceLexer.ml, ocaml, ocamldep, quiet, traverse }
 ocamlfind ocamldep -modules SourceLexer.ml > SourceLexer.ml.depends # cached
 # Target: SourceParser.mly.depends, tags: { extension:mly, file:SourceParser.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet, traverse }
@@ -70,19 +68,37 @@ ocamlfind ocamlc -c -w -40 -o SourceLexer.cmo SourceLexer.ml # cached
 # Target: SourcetoTyped.ml.depends, tags: { extension:ml, file:SourcetoTyped.ml, ocaml, ocamldep, quiet, traverse }
 ocamlfind ocamldep -modules SourcetoTyped.ml > SourcetoTyped.ml.depends # cached
 # Target: TypedAst.ml.depends, tags: { extension:ml, file:TypedAst.ml, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -modules TypedAst.ml > TypedAst.ml.depends # cached
+ocamlfind ocamldep -modules TypedAst.ml > TypedAst.ml.depends
 # Target: TypedAst.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:TypedAst.cmo, file:TypedAst.ml, implem, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -w -40 -o TypedAst.cmo TypedAst.ml # cached
+ocamlfind ocamlc -c -w -40 -o TypedAst.cmo TypedAst.ml
++ ocamlfind ocamlc -c -w -40 -o TypedAst.cmo TypedAst.ml
+File "TypedAst.ml", line 71, characters 46-157:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a case that is not matched:
+TypStruct _
+File "TypedAst.ml", line 96, characters 2-513:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a case that is not matched:
+NewRecord _
+File "TypedAst.ml", line 103, characters 2-165:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a case that is not matched:
+FieldAccess _
 # Target: SourcetoTyped.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:SourcetoTyped.cmo, file:SourcetoTyped.ml, implem, ocaml, quiet, traverse }
 ocamlfind ocamlc -c -w -40 -o SourcetoTyped.cmo SourcetoTyped.ml # cached
 # Target: TypedtoUntyped.ml.depends, tags: { extension:ml, file:TypedtoUntyped.ml, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -modules TypedtoUntyped.ml > TypedtoUntyped.ml.depends # cached
-# Target: TypedtoUntyped.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:TypedtoUntyped.cmo, file:TypedtoUntyped.ml, implem, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -w -40 -o TypedtoUntyped.cmo TypedtoUntyped.ml # cached
+ocamlfind ocamldep -modules TypedtoUntyped.ml > TypedtoUntyped.ml.depends
 # Target: UntypedtoGoto.ml.depends, tags: { extension:ml, file:UntypedtoGoto.ml, ocaml, ocamldep, quiet, traverse }
 ocamlfind ocamldep -modules UntypedtoGoto.ml > UntypedtoGoto.ml.depends # cached
 # Target: UntypedtoGoto.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:UntypedtoGoto.cmo, file:UntypedtoGoto.ml, implem, ocaml, quiet, traverse }
 ocamlfind ocamlc -c -w -40 -o UntypedtoGoto.cmo UntypedtoGoto.ml # cached
+# Target: AllocatedtoMips.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:AllocatedtoMips.cmo, file:AllocatedtoMips.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -w -40 -o AllocatedtoMips.cmo AllocatedtoMips.ml
+# Target: TypedtoUntyped.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:TypedtoUntyped.cmo, file:TypedtoUntyped.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -w -40 -o TypedtoUntyped.cmo TypedtoUntyped.ml
++ ocamlfind ocamlc -c -w -40 -o TypedtoUntyped.cmo TypedtoUntyped.ml
+File "TypedtoUntyped.ml", line 62, characters 6-20:
+Warning 26: unused variable erase_f_access.
 # Target: Main.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:Main.cmo, file:Main.ml, implem, ocaml, quiet, traverse }
 ocamlfind ocamlc -c -w -40 -o Main.cmo Main.ml # cached
 # Target: SourceAst.cmx, tags: { compile, extension:cmx, extension:ml, file:SourceAst.cmx, file:SourceAst.ml, implem, native, ocaml, quiet, traverse }
@@ -97,8 +113,6 @@ ocamlfind ocamlopt -c -w -40 -o IrAst.cmx IrAst.ml # cached
 ocamlfind ocamlopt -c -w -40 -o AllocatedAst.cmx AllocatedAst.ml # cached
 # Target: Mips.cmx, tags: { compile, extension:cmx, extension:ml, file:Mips.cmx, file:Mips.ml, implem, native, ocaml, quiet, traverse }
 ocamlfind ocamlopt -c -w -40 -o Mips.cmx Mips.ml # cached
-# Target: AllocatedtoMips.cmx, tags: { compile, extension:cmx, extension:ml, file:AllocatedtoMips.cmx, file:AllocatedtoMips.ml, implem, native, ocaml, quiet, traverse }
-ocamlfind ocamlopt -c -w -40 -o AllocatedtoMips.cmx AllocatedtoMips.ml # cached
 # Target: GototoIr.cmx, tags: { compile, extension:cmx, extension:ml, file:GototoIr.cmx, file:GototoIr.ml, implem, native, ocaml, quiet, traverse }
 ocamlfind ocamlopt -c -w -40 -o GototoIr.cmx GototoIr.ml # cached
 # Target: Graph.cmx, tags: { compile, extension:cmx, extension:ml, file:Graph.cmx, file:Graph.ml, implem, native, ocaml, quiet, traverse }
@@ -118,15 +132,33 @@ ocamlfind ocamlopt -c -w -40 -o SourceParser.cmx SourceParser.ml # cached
 # Target: SourceLexer.cmx, tags: { compile, extension:cmx, extension:ml, file:SourceLexer.cmx, file:SourceLexer.ml, implem, native, ocaml, quiet, traverse }
 ocamlfind ocamlopt -c -w -40 -o SourceLexer.cmx SourceLexer.ml # cached
 # Target: TypedAst.cmx, tags: { compile, extension:cmx, extension:ml, file:TypedAst.cmx, file:TypedAst.ml, implem, native, ocaml, quiet, traverse }
-ocamlfind ocamlopt -c -w -40 -o TypedAst.cmx TypedAst.ml # cached
+ocamlfind ocamlopt -c -w -40 -o TypedAst.cmx TypedAst.ml
++ ocamlfind ocamlopt -c -w -40 -o TypedAst.cmx TypedAst.ml
+File "TypedAst.ml", line 71, characters 46-157:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a case that is not matched:
+TypStruct _
+File "TypedAst.ml", line 96, characters 2-513:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a case that is not matched:
+NewRecord _
+File "TypedAst.ml", line 103, characters 2-165:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a case that is not matched:
+FieldAccess _
 # Target: SourcetoTyped.cmx, tags: { compile, extension:cmx, extension:ml, file:SourcetoTyped.cmx, file:SourcetoTyped.ml, implem, native, ocaml, quiet, traverse }
 ocamlfind ocamlopt -c -w -40 -o SourcetoTyped.cmx SourcetoTyped.ml # cached
-# Target: TypedtoUntyped.cmx, tags: { compile, extension:cmx, extension:ml, file:TypedtoUntyped.cmx, file:TypedtoUntyped.ml, implem, native, ocaml, quiet, traverse }
-ocamlfind ocamlopt -c -w -40 -o TypedtoUntyped.cmx TypedtoUntyped.ml # cached
 # Target: UntypedtoGoto.cmx, tags: { compile, extension:cmx, extension:ml, file:UntypedtoGoto.cmx, file:UntypedtoGoto.ml, implem, native, ocaml, quiet, traverse }
 ocamlfind ocamlopt -c -w -40 -o UntypedtoGoto.cmx UntypedtoGoto.ml # cached
+# Target: AllocatedtoMips.cmx, tags: { compile, extension:cmx, extension:ml, file:AllocatedtoMips.cmx, file:AllocatedtoMips.ml, implem, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -w -40 -o AllocatedtoMips.cmx AllocatedtoMips.ml
+# Target: TypedtoUntyped.cmx, tags: { compile, extension:cmx, extension:ml, file:TypedtoUntyped.cmx, file:TypedtoUntyped.ml, implem, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -w -40 -o TypedtoUntyped.cmx TypedtoUntyped.ml
++ ocamlfind ocamlopt -c -w -40 -o TypedtoUntyped.cmx TypedtoUntyped.ml
+File "TypedtoUntyped.ml", line 62, characters 6-20:
+Warning 26: unused variable erase_f_access.
 # Target: Main.cmx, tags: { compile, extension:cmx, extension:ml, file:Main.cmx, file:Main.ml, implem, native, ocaml, quiet, traverse }
 ocamlfind ocamlopt -c -w -40 -o Main.cmx Main.ml # cached
 # Target: Main.native, tags: { dont_link_with, extension:native, file:Main.native, link, native, ocaml, program, quiet, traverse }
-ocamlfind ocamlopt unix.cmxa -linkpkg SourceAst.cmx UntypedAst.cmx GotoAst.cmx IrAst.cmx AllocatedAst.cmx Mips.cmx AllocatedtoMips.cmx GototoIr.cmx Graph.cmx GraphColoring.cmx IrLiveness.cmx IrInterferenceGraph.cmx IrtoAllocated.cmx SourceParser.cmx SourceLexer.cmx TypedAst.cmx SourcetoTyped.cmx TypedtoUntyped.cmx UntypedtoGoto.cmx Main.cmx -o Main.native # cached
+ocamlfind ocamlopt unix.cmxa -linkpkg SourceAst.cmx UntypedAst.cmx GotoAst.cmx IrAst.cmx AllocatedAst.cmx Mips.cmx AllocatedtoMips.cmx GototoIr.cmx Graph.cmx GraphColoring.cmx IrLiveness.cmx IrInterferenceGraph.cmx IrtoAllocated.cmx SourceParser.cmx SourceLexer.cmx TypedAst.cmx SourcetoTyped.cmx TypedtoUntyped.cmx UntypedtoGoto.cmx Main.cmx -o Main.native
 # Compilation successful.

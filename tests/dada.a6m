@@ -1,0 +1,15 @@
+main(integer x) (
+  printz(37);
+)
+
+(* Dans le main la fonction est appelée avec un int
+c'est donc cette fonction que est appelée elle imprime un %
+*)
+printz(integer n) (
+  print(n);
+)
+
+(* surcharge de la fonction printz avec un argument booléen*)
+printz(boolean n) (
+  print(39);
+)

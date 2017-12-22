@@ -8,14 +8,12 @@ module S = TypedAst  (* Source de la transformation *)
 module T = UntypedAst (* Cible de la transformation  *)
 
  
-
-
 let erase_function p f =
   (* let structs = p.structs in *)
-  
+
   let rec erase_block b = List.map erase_instruction b
 
-        
+
   and erase_instruction : S.instruction -> T.instruction = function
     | Set(l, e)     -> T.Set(erase_location l, erase_expression e)
     | While(e, b)   -> T.While(erase_expression e, erase_block b)
@@ -24,7 +22,7 @@ let erase_function p f =
     | ProcCall(c)   -> T.ProcCall(erase_call c)
     | Throw         -> T.Throw
     | Try(b1, b2)   -> T.Try(erase_block b1, erase_block b2)
-      
+
   and erase_expression typed_expr =
     match typed_expr.elt with
     | Literal(l)        -> T.Literal(l)
@@ -32,7 +30,7 @@ let erase_function p f =
     | Binop(op, e1, e2) -> T.Binop(op, erase_expression e1, erase_expression e2)
     | FunCall(c)        -> T.FunCall(erase_call c)
     | NewArray(e, _)    -> T.NewArray(erase_expression e)
-    | NewRecord(str)    -> T.NewArray(T.Location( T.Identifier(str))) 
+    | NewRecord(str)    -> T.NewArray(T.Location( T.Identifier(str)))
   and erase_location typed_loc =
     match typed_loc.elt with
     | Identifier(id)  -> T.Identifier(id)
@@ -43,7 +41,7 @@ let erase_function p f =
        (* let s = match te.annot with *)
        (* | TypStruct(st) -> st *)
        (* in *)
-       
+
        (* let s_info = List.assoc s p.S.structs in     *)
 
        (* let rec get_pos str s count = *)
@@ -51,14 +49,14 @@ let erase_function p f =
        (* 	 | [] -> failwith "Champs non existant" *)
        (* 	 | (str,_)::_ -> count *)
        (* 	 | _::tl -> get_pos str tl (count + 1) *)
-	      
+
        (* in *)
-       
+
        (* let pos_int = get_pos str s_info 1 in *)
        (* let pos = T.Literal(Int(pos_int)) in *)
        (* let aa  = (erase_expression te, pos) in  *)
        (* T.ArrayAccess(aa) *)
-       
+
   and erase_a_access (e1, e2) = (erase_expression e1, erase_expression e2)
 
   and erase_f_access (e,t) = (erase_expression e, t)
@@ -66,7 +64,7 @@ let erase_function p f =
   and erase_call typed_c =
     let (id, args) = typed_c.elt in
     let new_id = List.fold_left
-      (fun str arg -> str ^ (Printf.sprintf "_%s" (S.print_typ arg.S.annot))) id args      
+      (fun str arg -> str ^ (Printf.sprintf "_%s" (S.print_typ arg.S.annot))) id args
     in
     (new_id, List.map erase_expression args)
   in
@@ -80,17 +78,16 @@ let erase_function p f =
       f.S.locals
       T.Symb_Tbl.empty
   in
-  
+
   let code = erase_block f.S.code in
-  
-  { locals; T.formals = List.length f.formals; code }    
+
+  { locals; T.formals = List.length f.formals; code }
 
 let erase_program p =
   (* Printf.printf "\nAffichage de la version Typed \n"; *)
   (* Printf.printf "%s\n" (S.print_program p); *)
   List.map (fun (id, f) ->
     let new_id = List.fold_left
-      (fun str arg -> str ^ (Printf.sprintf "_%s" (S.print_typ (snd arg)))) id f.S.formals      
+      (fun str arg -> str ^ (Printf.sprintf "_%s" (S.print_typ (snd arg)))) id f.S.formals
     in
     (new_id, erase_function p f)) p
-    

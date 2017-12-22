@@ -1,0 +1,8 @@
+main(integer x) (
+  var integer a;
+  var boolean b;
+
+  a := a - b;
+
+  
+)

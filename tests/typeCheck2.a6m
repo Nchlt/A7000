@@ -1,0 +1,5 @@
+main(integer x) (
+  var []integer t;
+
+  t := [true]integer;
+)
