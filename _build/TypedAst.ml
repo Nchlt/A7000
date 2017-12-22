@@ -7,9 +7,17 @@ type identifier_info = SourceAst.identifier_info
 type typ = SourceAst.typ
 type literal = SourceAst.literal
 type binop = SourceAst.binop
+type program = SourceAst.program
+type struct_info = SourceAst.struct_info
 
-type program = (string * function_info) list
 
+(* type program = { *)
+(*   functions :  (string * function_info) list; *)
+(*   structs   :  (string * struct_info) list; *)
+(* } *)
+
+(* and struct_info = (string * typ) list *)
+  
 and function_info = {
   (* Les mentions du type de retour et des types des paramètres seront
      utiles pour la vérification des types *)
@@ -43,12 +51,16 @@ and expression =
   | Binop     of binop * typed_expression * typed_expression (* Opération binaire   *)
   | FunCall   of typed_call                            (* Appel de fonction   *)
   | NewArray  of typed_expression * typ                (* Création de tableau *)
+  | NewRecord of string
 
 and call = string * typed_expression list
 
 and location =
   | Identifier  of string   (* Variable en mémoire *)
   | ArrayAccess of a_access (* Case d'un tableau   *)
+  | FieldAccess of f_access
+
+and f_access = typed_expression * string
 
 and a_access = typed_expression * typed_expression
 

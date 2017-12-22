@@ -4,8 +4,6 @@
 type token = 
   | WHILE
   | VAR
-  | TRY
-  | THROW
   | THEN
   | STRUCT
   | STAR
@@ -35,7 +33,6 @@ type token =
   | CONST_BOOL of (bool)
   | COMMA
   | CB
-  | CATCH
   | BOOL
   | BEGIN
   | AND

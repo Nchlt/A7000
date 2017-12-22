@@ -27,9 +27,10 @@
 %token POINT
 %token INCR DECR
 
-%token THROW CATCH TRY
+(*Pour le tp 9 bis *)
+(* %token THROW CATCH TRY *)
 
-%left POINT
+
 %left AND OR
 %left LE LT EQUAL NEQ
 %left PLUS MINUS
@@ -37,6 +38,7 @@
 %left OB
 %left IDENT
 %left BEGIN
+%left POINT
 
 
 %start program
@@ -94,9 +96,10 @@ var_decl:
 ;
 
 typ:
-| INT          { TypInteger    }
-| BOOL         { TypBoolean    }
-| OB CB ty=typ { TypArray(ty)  }
+| INT            { TypInteger    }
+| BOOL           { TypBoolean    }
+| OB; CB; ty=typ { TypArray(ty)  }
+| BEGIN; id = IDENT; END { TypStruct(id)  }
 ;
 
 instructions:

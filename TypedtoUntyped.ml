@@ -6,11 +6,16 @@
 
 module S = TypedAst  (* Source de la transformation *)
 module T = UntypedAst (* Cible de la transformation  *)
-  
+
+ 
+
+
 let erase_function p f =
+  (* let structs = p.structs in *)
   
   let rec erase_block b = List.map erase_instruction b
-    
+
+        
   and erase_instruction : S.instruction -> T.instruction = function
     | Set(l, e)     -> T.Set(erase_location l, erase_expression e)
     | While(e, b)   -> T.While(erase_expression e, erase_block b)
@@ -27,13 +32,36 @@ let erase_function p f =
     | Binop(op, e1, e2) -> T.Binop(op, erase_expression e1, erase_expression e2)
     | FunCall(c)        -> T.FunCall(erase_call c)
     | NewArray(e, _)    -> T.NewArray(erase_expression e)
-       
+    | NewRecord(str)    -> T.NewArray(T.Location( T.Identifier(str))) 
   and erase_location typed_loc =
     match typed_loc.elt with
     | Identifier(id)  -> T.Identifier(id)
     | ArrayAccess(aa) -> T.ArrayAccess(erase_a_access aa)
+    | FieldAccess(fa) -> failwith "Pas encore implémenté"
+       (* Nous y sommes presque mais nous n'arrivons pas à acceder à p.structs pour y faire notre recherche *)
+       (* let (te, str) = fa in *)
+       (* let s = match te.annot with *)
+       (* | TypStruct(st) -> st *)
+       (* in *)
+       
+       (* let s_info = List.assoc s p.S.structs in     *)
+
+       (* let rec get_pos str s count = *)
+       (* 	 match s with *)
+       (* 	 | [] -> failwith "Champs non existant" *)
+       (* 	 | (str,_)::_ -> count *)
+       (* 	 | _::tl -> get_pos str tl (count + 1) *)
+	      
+       (* in *)
+       
+       (* let pos_int = get_pos str s_info 1 in *)
+       (* let pos = T.Literal(Int(pos_int)) in *)
+       (* let aa  = (erase_expression te, pos) in  *)
+       (* T.ArrayAccess(aa) *)
        
   and erase_a_access (e1, e2) = (erase_expression e1, erase_expression e2)
+
+  and erase_f_access (e,t) = (erase_expression e, t)
 
   and erase_call typed_c =
     let (id, args) = typed_c.elt in
@@ -42,7 +70,6 @@ let erase_function p f =
     in
     (new_id, List.map erase_expression args)
   in
-
   (* erase_identifier_info: S.identifier_info -> T.identifier_info *)
   let erase_identifier_info (i : S.identifier_info) =
     i.kind in
